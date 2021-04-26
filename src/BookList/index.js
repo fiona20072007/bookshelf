@@ -1,30 +1,25 @@
 import React from "react";
-
 import BookDetail from "./BookDetail"
-import { Switch,Link,Route,useRouteMatch,} from "react-router-dom";
+import {Switch, Link, Route, useRouteMatch} from "react-router-dom";
+import BookCard from "./BookCard";
 
 function BookList() {
     let match = useRouteMatch();
     return (
-        <div>
-            <button>
-                <Link to="/">back</Link>
-            </button>
-            <h2>Topics</h2>
-            <ul>
-                <li>
-                    <Link to={`${match.url}/components`}>Components</Link>
-                </li>
-            </ul>
+        <>
             <Switch>
-                <Route path={`${match.path}/:bookId`}>
-                    <BookDetail/>
-                </Route>
+                <Route path={`${match.path}/:bookId`} component={BookDetail}/>
                 <Route path={match.path}>
-                    <h3>Please select a topic.</h3>
+                    <div>
+                        <div>
+                            <h1>書本列表</h1>
+                            <Link to="/add">+</Link>
+                        </div>
+                        <BookCard/>
+                    </div>
                 </Route>
             </Switch>
-        </div>
+        </>
     );
 }
 

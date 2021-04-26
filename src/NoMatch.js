@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
 
-function BookIndex() {
+function NoMatch() {
     return (
         <>
+            <div>404</div>
             <Link to="/books">Book list</Link>
         </>
     )
 }
 
-export default BookIndex
+export default NoMatch

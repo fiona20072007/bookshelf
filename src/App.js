@@ -1,16 +1,17 @@
 import React from "react";
-import BookList from "./BookList"
 import BookIndex from './BookIndex'
-import {
-    Switch,
-    Route
-} from "react-router-dom";
+import BookList from "./BookList"
+import AddBook from "./BookList/AddBook";
+import NoMatch from "./NoMatch"
+import {Switch, Route} from "react-router-dom";
 
 function App() {
     return (
         <Switch>
             <Route exact path="/" component={BookIndex}/>
             <Route path="/books" component={BookList}/>
+            <Route path="/add" component={AddBook}/>
+            <Route path="*" component={NoMatch}/>
         </Switch>
     );
 }
