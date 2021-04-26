@@ -2,7 +2,7 @@ import React from "react";
 import EditBook from "./EditBook";
 import {Switch, Link, Route, useRouteMatch, useParams} from "react-router-dom";
 
-function BookDetail() {
+const BookDetail = () => {
     let {bookId} = useParams();
     let match = useRouteMatch();
     return (

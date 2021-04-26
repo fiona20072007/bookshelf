@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import BookDetail from "./BookDetail"
-import {Switch, Link, Route, useRouteMatch} from "react-router-dom";
 import BookCard from "./BookCard";
+import {Switch, Link, Route, useRouteMatch} from "react-router-dom";
+import {getData} from "../util";
+import {getBooksUrl} from "../constants";
 
-function BookList() {
+
+const BookList = () => {
     let match = useRouteMatch();
+    const [bookList, setBookList] = useState([])
+    useEffect(() => {
+        getData(getBooksUrl).then((res) => setBookList(res.data))
+    },[])
     return (
         <>
             <Switch>
@@ -15,7 +22,9 @@ function BookList() {
                             <h1>書本列表</h1>
                             <Link to="/add">+</Link>
                         </div>
-                        <BookCard/>
+                        {bookList.map(book =>
+                            <BookCard book={book}/>
+                        )}
                     </div>
                 </Route>
             </Switch>

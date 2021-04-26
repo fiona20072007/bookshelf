@@ -1,13 +1,15 @@
 import React from "react";
 import {Link, useParams, useRouteMatch} from "react-router-dom";
 
-function BookCard() {
-    let {bookId} = useParams();
+const BookCard = ({book}) => {
+    // let {bookId} = useParams();
     let match = useRouteMatch();
     return (
         <>
-            <h3>{bookId}</h3>
-            <Link to={`${match.url}/123`}>BookCard</Link>
+            <Link to={`${match.url}/${book.id}`}>
+                <p>{book.title}</p>
+                <p>{book.author}</p>
+            </Link>
         </>
     );
 }
