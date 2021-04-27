@@ -4,9 +4,8 @@ import {Link} from "react-router-dom";
 import {getData} from "../util";
 import {getBooksUrl} from "../constants";
 import styles from "../scss/bookList.module.scss"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faPlus} from '@fortawesome/free-solid-svg-icons'
 
 
 const BookList = () => {
@@ -18,7 +17,7 @@ const BookList = () => {
         <div className={styles.bookList}>
             <div className={styles.bookListHeader}>
                 <h1>書本列表</h1>
-                <Link to="/add"><FontAwesomeIcon icon={faPlus} /></Link>
+                <Link to="/add"><FontAwesomeIcon icon={faPlus}/></Link>
             </div>
             <div className={styles.bookListBody}>
                 {bookList.map((book, index) =>

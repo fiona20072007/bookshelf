@@ -7,8 +7,8 @@ const BookCard = ({book}) => {
     return (
         <div className={styles.bookCard}>
             <Link to={`${match.url}/${book.id}`} className={styles.bookCardDetail}>
-                <p>{book.title}</p>
-                <p>{book.author}</p>
+                <p className={styles.bookCardTitle}>{book.title}</p>
+                <p className={styles.bookCardAuthor}>{book.author}</p>
             </Link>
         </div>
     );

@@ -1,0 +1,84 @@
+$lightGray: #F0F0F0;
+$blue: #2894FF;
+$darkGray: rgb(138, 134, 134);
+
+.bookDetailHeader, .addBookHeader {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  h1 {
+    margin: auto;
+    font-size: 25px;
+    font-weight: 400;
+    color: $darkGray;
+  }
+  a {
+    position: fixed;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  .backIcon {
+    left: 20px;
+    color: $darkGray;
+  }
+  .editIcon {
+    right: 20px;
+    color: $blue;
+  }
+
+  .back {
+    margin-left: 20px;
+    color: $darkGray;
+  }
+}
+.bookDetailBody, .addBookBody {
+  background-color: $lightGray;
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bookDetailInputAll, .addBookInputAll {
+  width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    width: 90%;
+    &:last-child {
+      height: 250px;
+    }
+  }
+}
+.bookDetailEditAll, .addBookEditAll {
+  width: 88vw;
+  .btn {
+    display: flex;
+    justify-content: space-between;
+    button {
+      cursor: pointer;
+      border: none;
+      width: 180px;
+      height: 55px;
+      border-radius: 30px;
+      font-size: 20px;
+      color: white;
+      &:first-child {
+        background-color: $darkGray;
+      }
+      &:last-child {
+        background-color: $blue;
+      }
+    }
+  }
+}
+.alert {
+  text-align: center;
+  color: red;
+  margin-top: -15px;
+  margin-bottom: 20px;
+}
+.hide {
+  display: none;
+}

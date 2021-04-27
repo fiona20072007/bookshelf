@@ -7,12 +7,14 @@ $darkGray: rgb(138, 134, 134);
     height: 100vh;
 }
 .bookListHeader {
-    height: 55px;
+    height: 60px;
     display: flex;
     align-items: center;
     h1 {
         margin: auto;
         font-size: 25px;
+        font-weight: 400;
+        color: $darkGray;
     }
     a {
         position: fixed;
@@ -27,6 +29,6 @@ $darkGray: rgb(138, 134, 134);
     display: flex;
     flex-flow: wrap;
     justify-content: flex-start;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 90px);
     overflow: scroll;
 }
