@@ -1,0 +1,32 @@
+$lightGray: #F0F0F0;
+$blue: #2894FF;
+$darkGray: rgb(138, 134, 134);
+
+.bookList {
+    width: 100vw;
+    height: 100vh;
+}
+.bookListHeader {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    h1 {
+        margin: auto;
+        font-size: 25px;
+    }
+    a {
+        position: fixed;
+        right: 20px;
+        font-size: 25px;
+        color: $blue;
+    }
+}
+.bookListBody {
+    background-color: $lightGray;
+    padding: 15px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    height: calc(100vh - 85px);
+    overflow: scroll;
+}

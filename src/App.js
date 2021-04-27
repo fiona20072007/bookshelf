@@ -5,10 +5,11 @@ import AddBook from "./BookList/AddBook";
 import NoMatch from "./NoMatch"
 import {Switch, Route} from "react-router-dom";
 import BookDetail from "./BookList/BookDetail";
+import styles from "./scss/App.module.scss";
 
 function App() {
     return (
-        <Switch>
+        <Switch className={styles.app}>
             <Route exact path="/" component={BookIndex}/>
             <Route path="/books/:bookId" component={BookDetail}/>
             <Route path="/books" component={BookList}/>
