@@ -7,18 +7,21 @@ import {getBooksUrl} from "../constants";
 const BookDetail = () => {
     let {bookId} = useParams();
     let match = useRouteMatch();
-    const [bookDetail, setBookDetail] = useState('')
+    const [bookDetail, setBookDetail] = useState('');
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         getData(getBooksUrl + bookId).then((res) => {
             setBookDetail(res.data)
         })
-    }, [])
+        setReload(false)
+    }, [reload])
 
     return (
         <>
             <Switch>
-                <Route path={`${match.path}/edit`} render={(props) => <EditBook bookTitle={bookDetail.title} {...props} />} />
+                <Route path={`${match.path}/edit`}
+                       render={(props) => <EditBook bookTitle={bookDetail.title} reload={reload} setReload={setReload} {...props} />}/>
                 <Route path={match.path}>
                     <div>
                         <button>

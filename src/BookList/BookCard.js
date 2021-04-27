@@ -1,8 +1,7 @@
 import React from "react";
-import {Link, useParams, useRouteMatch} from "react-router-dom";
+import {Link, useRouteMatch} from "react-router-dom";
 
 const BookCard = ({book}) => {
-    // let {bookId} = useParams();
     let match = useRouteMatch();
     return (
         <>

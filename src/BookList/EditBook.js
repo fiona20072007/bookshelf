@@ -42,6 +42,7 @@ const AddBook = (props) => {
                 setAuthor("");
                 setDesc("");
                 setAlert("");
+                props.setReload(true);
             })
             .catch(() => {
                 console.log("修改失敗")

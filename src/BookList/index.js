@@ -11,7 +11,7 @@ const BookList = () => {
     const [bookList, setBookList] = useState([])
     useEffect(() => {
         getData(getBooksUrl).then((res) => setBookList(res.data))
-    },[])
+    }, [])
     return (
         <>
             <Switch>
@@ -22,9 +22,11 @@ const BookList = () => {
                             <h1>書本列表</h1>
                             <Link to="/add">+</Link>
                         </div>
-                        {bookList.map(book =>
-                            <BookCard book={book}/>
-                        )}
+                        <div>
+                            {bookList.map((book, index) =>
+                                <BookCard key={index} book={book}/>
+                            )}
+                        </div>
                     </div>
                 </Route>
             </Switch>

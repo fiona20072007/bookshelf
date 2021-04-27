@@ -10,6 +10,7 @@ function addData(path, obj) {
     return axios.post(path, obj)
 }
 
+
 export {
     getData, patchData, addData
 }
