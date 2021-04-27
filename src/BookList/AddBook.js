@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {addData} from "../util";
 import {getBooksUrl} from "../constants";
+import InputField from "../Common/InputField";
 
 const AddBook = () => {
 
@@ -24,6 +25,10 @@ const AddBook = () => {
         }
         if(author === "") {
             setAlert("請填寫作者")
+            return
+        }
+        if(desc === "") {
+            setAlert("請填寫備註")
             return
         }
         const addBookDetail = {
@@ -51,9 +56,9 @@ const AddBook = () => {
             </div>
             <div>
                 <div>
-                    <input type="text" placeholder="名稱" value={title} onChange={(e) => setTitle(e.target.value)}/>
-                    <input type="text" placeholder="作者" value={author} onChange={(e) => setAuthor(e.target.value)}/>
-                    <input type="text" placeholder="備註" value={desc} onChange={(e) => setDesc(e.target.value)}/>
+                    <InputField title={"名稱"} editable={true} method={setTitle} inputValue={title}/>
+                    <InputField title={"作者"} editable={true} method={setAuthor} inputValue={author}/>
+                    <InputField title={"備註"} editable={true} method={setDesc} inputValue={desc}/>
                 </div>
                 <div>{alert}</div>
                 <div>
