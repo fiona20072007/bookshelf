@@ -1,0 +1,27 @@
+.bookIndex {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  a {
+    color: black;
+    font-weight: bold;
+    font-size: 40px;
+    animation: text-focus-in 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    &:active {
+      color: black;
+    }
+  }
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}

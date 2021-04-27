@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
+import styles from "./scss/noMatch.module.scss";
 
 function NoMatch() {
     return (
-        <>
-            <div>404</div>
-            <Link to="/books">Book list</Link>
-        </>
+        <div className={styles.noMatchBody}>
+            <div title="404" className={styles.noMatch}>404</div>
+        </div>
     )
 }
 
