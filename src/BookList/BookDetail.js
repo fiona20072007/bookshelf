@@ -1,11 +1,14 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect} from "react";
 import InputField from "../Common/InputField";
 import {Link, useParams, useHistory} from "react-router-dom";
-import {getData, patchData, deleteData} from "../util";
+import {getData, patchData, deleteData, handleAlert} from "../util";
 import {getBooksUrl} from "../constants";
 import styles from "../scss/bookDetail.module.scss";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronLeft, faEdit} from '@fortawesome/free-solid-svg-icons';
+import Loading from "../Common/Loading";
+import successImg from '../image/success.jpg';
+import failImg from '../image/fail.png';
 
 const BookDetail = () => {
     let {bookId} = useParams();
@@ -16,15 +19,17 @@ const BookDetail = () => {
     const [author, setAuthor] = useState("");
     const [desc, setDesc] = useState("");
     const [alert, setAlert] = useState("");
+    const [isEditable, setIsEditable] = useState(false);
+    const [load, setLoad] = useState(true);
 
     useEffect(() => {
         getData(getBooksUrl + bookId).then((res) => {
             setBookDetail(res.data);
             setHeader(res.data.title);
+            setLoad(false);
         })
     }, [])
 
-    const [isEditable, setIsEditable] = useState(false)
     const handleEdit = () => {
         setIsEditable((pre) => !pre);
     }
@@ -39,15 +44,15 @@ const BookDetail = () => {
 
     const handleEditBook = () => {
         if (title === "") {
-            setAlert("請填寫名稱");
+            handleAlert("請填寫名稱", setAlert)
             return
         }
         if (author === "") {
-            setAlert("請填寫作者");
+            handleAlert("請填寫作者", setAlert)
             return
         }
         if (desc === "") {
-            setAlert("請填寫備註");
+            handleAlert("請填寫備註", setAlert)
             return
         }
         const editBookDetail = {
@@ -61,9 +66,10 @@ const BookDetail = () => {
                 setAuthor("");
                 setDesc("");
                 setAlert("");
+                handleAlert("修改成功", setAlert)
             })
             .catch(() => {
-                console.log("修改失敗");
+                handleAlert("修改失敗", setAlert)
             })
     }
     const handleDeleteBook = () => {
@@ -72,13 +78,14 @@ const BookDetail = () => {
                 history.push("/books");
             })
             .catch(() => {
-                console.log("刪除失敗");
+                handleAlert("刪除失敗", setAlert)
             })
     }
 
 
     return (
         <>
+            {load === true && <Loading />}
             <div className={styles.bookDetailHeader}>
                 <Link to={isEditable ? `/books/${bookId}` : "/books"} onClick={isEditable ? handleClearInput : null}
                       className={styles.backIcon}><FontAwesomeIcon icon={faChevronLeft}/></Link>
@@ -96,7 +103,6 @@ const BookDetail = () => {
                                 inputValue={desc}/>
                 </div>
                 <div className={isEditable ? styles.bookDetailEditAll : styles.hide}>
-                    <div className={styles.alert}>{alert}</div>
                     <div className={styles.btn}>
                         <button onClick={handleClearInput}>取消</button>
                         <button onClick={handleDeleteBook}>刪除</button>
@@ -104,6 +110,22 @@ const BookDetail = () => {
                     </div>
                 </div>
             </div>
+            {alert !== "" && (
+                <>
+                    <div className={alert !== "修改失敗" && alert !== "修改成功" && alert !== "刪除失敗" ? styles.alertMsg : styles.noAlertMsg}>
+                        <img src={failImg} alt="alert"/>
+                        {alert}
+                    </div>
+                    <div className={alert === "修改成功" ? styles.successMsg : styles.noAlertMsg}>
+                        <img src={successImg} alt="success"/>
+                        {alert}
+                    </div>
+                    <div className={alert === "修改失敗" || alert === "刪除失敗"  ? styles.failMsg : styles.noAlertMsg}>
+                        <img src={failImg} alt="fail"/>
+                        {alert}
+                    </div>
+                </>
+            )}
         </>
     );
 }

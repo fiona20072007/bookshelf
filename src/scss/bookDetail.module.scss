@@ -2,6 +2,7 @@ $lightGray: #F0F0F0;
 $blue: #2894FF;
 $darkGray: rgb(138, 134, 134);
 $red: #FF5151;
+$green: #01B468;
 
 .bookDetailHeader, .addBookHeader {
     height: 60px;
@@ -69,6 +70,7 @@ $red: #FF5151;
         justify-content: space-between;
 
         button {
+            outline: none;
             cursor: pointer;
             border: none;
             width: 150px;
@@ -77,6 +79,7 @@ $red: #FF5151;
             font-size: 20px;
             color: white;
             background-color: $red;
+            opacity: 0.7;
 
             &:first-child {
                 background-color: $darkGray;
@@ -84,6 +87,11 @@ $red: #FF5151;
 
             &:last-child {
                 background-color: $blue;
+            }
+
+            &:hover {
+                opacity: 1;
+                border: 1px solid black;
             }
         }
     }
@@ -98,4 +106,63 @@ $red: #FF5151;
 
 .hide {
     display: none;
+}
+
+@mixin msgBase($color) {
+    position: fixed;
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: white;
+    opacity: 0.9;
+    color: $color;
+    border: 2px solid $color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 6px;
+    font-weight: 500;
+    font-size: 20px;
+    top: 30vh;
+    left: 50vw;
+    margin-left: -100px;
+    animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    img {
+        width: 50px;
+        margin-right: 10px;
+    }
+}
+.alertMsg {
+    @include msgBase($darkGray);
+}
+.successMsg {
+    @include msgBase($green);
+}
+.failMsg {
+    @include msgBase($red);
+}
+
+.noAlertMsg {
+    display: none;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slide-out-top {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
 }

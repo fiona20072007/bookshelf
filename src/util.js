@@ -16,7 +16,14 @@ function deleteData(path) {
     return axios.delete(path)
 }
 
+const handleAlert = (msg, method) => {
+    method(msg);
+    setTimeout(() => {
+        method("");
+    }, 1500)
+}
+
 
 export {
-    getData, patchData, addData,  deleteData
+    getData, patchData, addData,  deleteData, handleAlert
 }
