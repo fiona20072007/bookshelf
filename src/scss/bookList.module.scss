@@ -6,16 +6,19 @@ $darkGray: rgb(138, 134, 134);
     width: 100vw;
     height: 100vh;
 }
+
 .bookListHeader {
     height: 60px;
     display: flex;
     align-items: center;
+
     h1 {
         margin: auto;
         font-size: 25px;
         font-weight: 400;
         color: $darkGray;
     }
+
     a {
         position: fixed;
         right: 20px;
@@ -23,6 +26,7 @@ $darkGray: rgb(138, 134, 134);
         color: $blue;
     }
 }
+
 .bookListBody {
     background-color: $lightGray;
     padding: 15px;

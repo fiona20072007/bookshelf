@@ -1,41 +1,41 @@
 $darkGray: rgb(138, 134, 134);
 
 .bookCard {
-  width: 170px;
-  height: 235px;
-  display: flex;
-  margin: auto;
-  align-items: center;
-  justify-content: center;
+    width: 170px;
+    height: 235px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
 }
 
 .bookCardDetail {
-  background-color: white;
-  width: 155px;
-  height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    background-color: white;
+    width: 155px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  box-shadow: 10px 10px 30px rgba(18, 47, 61, 0.5),
-  -10px -10px 30px rgba(248, 253, 255, 0.9),
-  inset 10px 10px 30px transparent,
-  inset -10px -10px 30px transparent;
+    box-shadow: 10px 10px 30px rgba(18, 47, 61, 0.5),
+    -10px -10px 30px rgba(248, 253, 255, 0.9),
+    inset 10px 10px 30px transparent,
+    inset -10px -10px 30px transparent;
 
-  &:hover, &:active {
-    box-shadow: 10px 10px 30px transparent,
-    -10px -10px 30px transparent,
-    inset 10px 10px 30px rgba(18, 47, 61, 0.5),
-    inset -10px -10px 30px rgba(248, 253, 255, 0.9);
-  }
+    &:hover, &:active {
+        box-shadow: 10px 10px 30px transparent,
+        -10px -10px 30px transparent,
+        inset 10px 10px 30px rgba(18, 47, 61, 0.5),
+        inset -10px -10px 30px rgba(248, 253, 255, 0.9);
+    }
 }
 
 .bookCardTitle {
-  color: $darkGray;
-  font-size: 20px;
+    color: $darkGray;
+    font-size: 20px;
 }
 
 .bookCardAuthor {
-  color: $darkGray;
+    color: $darkGray;
 }

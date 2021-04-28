@@ -65,6 +65,9 @@ const BookDetail = () => {
                 console.log("修改失敗");
             })
     }
+    const handleDeleteBook = () => {
+
+    }
 
 
     return (
@@ -90,6 +93,7 @@ const BookDetail = () => {
                     <div className={styles.btn}>
                         <button onClick={handleClearInput}>取消</button>
                         <button onClick={handleEditBook}>修改</button>
+                        <button onClick={handleDeleteBook}>修改</button>
                     </div>
                 </div>
             </div>
