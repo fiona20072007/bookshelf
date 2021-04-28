@@ -1,0 +1,2 @@
+(this.webpackJsonpbookshelf=this.webpackJsonpbookshelf||[]).push([[8],{52:function(o,e,n){o.exports={bookIndex:"bookIndex_bookIndex__1IgVs","text-focus-in":"bookIndex_text-focus-in__1Qd3c"}},76:function(o,e,n){"use strict";n.r(e);var s=n(10),t=n(52),c=n.n(t),b=n(1);e.default=function(){return Object(b.jsx)("div",{className:c.a.bookIndex,children:Object(b.jsx)(s.b,{to:"/books",children:"See All Books in Bookshelf"})})}}}]);
+//# sourceMappingURL=8.80624776.chunk.js.map
