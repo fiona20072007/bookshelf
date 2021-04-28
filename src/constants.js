@@ -1,5 +1,3 @@
-const getBooksUrl = "https://fe-interview-api.unnotech.com/api/book/"
+const getBooksUrl = "https://fe-interview-api.unnotech.com/api/book/";
 
-export {
-    getBooksUrl
-}
+export { getBooksUrl };
