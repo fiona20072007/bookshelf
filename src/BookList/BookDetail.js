@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from "react";
 import InputField from "../Common/InputField";
-import {Link, useParams} from "react-router-dom";
-import {getData, patchData} from "../util";
+import {Link, useParams, useHistory} from "react-router-dom";
+import {getData, patchData, deleteData} from "../util";
 import {getBooksUrl} from "../constants";
 import styles from "../scss/bookDetail.module.scss";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -9,6 +9,7 @@ import {faChevronLeft, faEdit} from '@fortawesome/free-solid-svg-icons';
 
 const BookDetail = () => {
     let {bookId} = useParams();
+    let history = useHistory();
     const [bookDetail, setBookDetail] = useState("");
     const [header, setHeader] = useState("");
     const [title, setTitle] = useState("");
@@ -66,7 +67,13 @@ const BookDetail = () => {
             })
     }
     const handleDeleteBook = () => {
-
+        deleteData(getBooksUrl + bookId + "/")
+            .then(() => {
+                history.push("/books");
+            })
+            .catch(() => {
+                console.log("刪除失敗");
+            })
     }
 
 
@@ -92,8 +99,8 @@ const BookDetail = () => {
                     <div className={styles.alert}>{alert}</div>
                     <div className={styles.btn}>
                         <button onClick={handleClearInput}>取消</button>
+                        <button onClick={handleDeleteBook}>刪除</button>
                         <button onClick={handleEditBook}>修改</button>
-                        <button onClick={handleDeleteBook}>修改</button>
                     </div>
                 </div>
             </div>

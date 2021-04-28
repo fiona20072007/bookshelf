@@ -18,5 +18,5 @@ function deleteData(path) {
 
 
 export {
-    getData, patchData, addData
+    getData, patchData, addData,  deleteData
 }

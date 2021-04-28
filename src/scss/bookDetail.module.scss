@@ -1,6 +1,7 @@
 $lightGray: #F0F0F0;
 $blue: #2894FF;
 $darkGray: rgb(138, 134, 134);
+$red: #FF5151;
 
 .bookDetailHeader, .addBookHeader {
     height: 60px;
@@ -75,6 +76,7 @@ $darkGray: rgb(138, 134, 134);
             border-radius: 30px;
             font-size: 20px;
             color: white;
+            background-color: $red;
 
             &:first-child {
                 background-color: $darkGray;
