@@ -14,6 +14,7 @@ function App() {
         <Suspense fallback={<Loading />}>
             <Switch className={styles.app}>
                 <Route exact path="/" component={BookIndex}/>
+                <Route exact path="/bookshelf" component={BookIndex}/>
                 <Route path="/books/:bookId" component={BookDetail}/>
                 <Route path="/books" component={BookList}/>
                 <Route path="/add" component={AddBook}/>
