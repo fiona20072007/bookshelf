@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# bookshelf
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
+Link: https://fiona20072007.github.io/bookshelf/
 
-## Available Scripts
+由於只使用 Github Pages，並沒有使用 firebase 或其他的網站部署，因此頁面無法支援重新整理。
 
-In the project directory, you can run:
+原因：GitHub Pages 是完全靜態的 Server，網址對應到了真實的檔案路徑，當存取根目錄 / 時，預設的設定會去找 /index.html，當在 /[repo-name]/books 頁面重新整理時，dist資料夾內並沒有 /[repo-name]/books/index.html，所以會顯示 404 not found。
 
-### `yarn start`
+如要 clone 在本地測試，請使用 master branch 測試
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+步驟：
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. `git clone https://github.com/fiona20072007/bookshelf.git`
+2. cd 到該資料夾並 `npm install`
+3. `npm run start`
+4. 到 http://localhost:3000/bookshelf
 
-### `yarn test`
+## User Flow
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![bookshelf UI image](./src/image/BookShelfUX.jpg)
 
-### `yarn build`
+＊＊（由於不輸入備註送出後API response會顯示有欄位未填寫，因此備註也列為必填項目）
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+到首頁後，點擊標題進入到 BookList 頁，可點擊標題欄位的新增書本按鈕或點擊書本。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+點擊新增按鈕後進入新增頁，可以輸入名稱、作者、備註。如有欄位未填寫點擊新增按鈕後會顯示提示，如都有填寫後送出成功和失敗也會顯示提示。點擊取消會清空所有輸入框。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+點擊書本後進入 BookDetail 頁，點擊編輯進到修改頁，修改時如有欄位未填寫點擊修改按鈕後會顯示提示，如都有填寫後送出成功和失敗也會顯示提示。點擊取消會清空所有輸入框並返回到 BookDetail 頁。刪除時如果刪除成功會導到 BookList 頁，刪除失敗會顯示提示。
 
-### `yarn eject`
+除了 BookList 頁以外的其他頁面左上方都有返回按鍵，功能都是返回上一頁。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+整個專案沒有使用第三方 library，主要使用 React 搭配 scss。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 遇到的困難、問題，以及解決的方法
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. 遇到類似的頁面會想拆成共用 component，但考量到新增書本頁與修改書本頁如果拆成共用後會難以擴充各自的功能，並且兩個頁面主要作用也不同，因此只把input拆出來。
+2. 原本考慮把書本詳細頁和編輯頁面拆成兩個不同的component，但由於各自功能太相似，差別只是能不能修改，拆成兩個component就要多一些維護成本，因此考量後決定在書本詳細頁面判斷是否為編輯狀態。
